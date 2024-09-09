@@ -1,0 +1,3684 @@
+{
+	"info": {
+		"_postman_id": "8e42623-a280-410f-8296-c02abf778fd",
+		"name": "Visitor, positive, invalid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34959014"
+	},
+	"item": [
+		{
+			"name": "list recipe by ID, invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/123456789",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"123456789"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by ID, null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/0",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by ID, empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by ID, invalid character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/!=/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"!=",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, long recipeID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"123456789\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, null recipeId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"0\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, empty recipeId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, invalid character recipeId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"%/\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, empty author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, invalid character author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"!?%\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, long commentBody",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"TesztElek\",\"commentBody\": \"fhreferfhbejfbehjfbehbfehbfefefebjfhebvhejbehbeerfrfbehfeuifherfuohfuoifheufhebfvezgvbeihberfiuerfhberhzferfbgerfguzefbgerbfeubezhbeieufberuifrberiufberufiebfeufberfuhberfuiebfuerbfuerbferufbeufbefberuiebfeufberuzfberuzfberfbeuzfberfuzgerbfzuhberuzfbeuzfberuiferbfuerbfeuzrifberufberufierbgfuzerbfzurfbrzufbruzfruzfberuifberuzfberufzbeguzfberzuferbgfuierfbgerufbgeruzfbgeruzfbgerufbgeruzfbgerufbrefuerbfuerfberzufbguerzfbgeruzfberufberufberuzfgbeuifhgeufrhfhuiehfuiehfuefhfeuifherfreuifhiurfhefgiurgfhirufghuifhgruiefhreuifgheruifhgeuirgfheruifgheqruifhgeruifgherufgheruifgheruifgheruifgherquigferuifhgeiufghueigeiufgheuifgheuifheuirfheiufhefherufhgeruihgeuihfeiuffrfgtgghgheuzgeuzfgerf\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, empty commentBody",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"TesztElek\",\"commentBody\": \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe, invalid character commentBody",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"TesztElek\",\"commentBody\": \"%!+\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by keyword, invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(ingredients=\"[]\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes?keyword=ggetgge",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "ggetgge",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by keyword, empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes?keyword=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by keyword, invalid character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes?keyword=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "!%/",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=4444456h&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "4444456h",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, null categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=0&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "0",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, empty categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid character categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"})",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=!%/&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "!%/",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=4d&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "4d",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, empty difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid character difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=!%/&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "!%/",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid costList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=3f&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "3f",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, empty costList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid character costlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=!%/&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "!%/",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invald maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=dsd4",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "dsd4",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, null maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=0",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "0",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, empty maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter, invalid character maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "!%/",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings, invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/52d",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"52d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings, null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/0",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings, empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings, invalid character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/!%",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"!%"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what to cook, invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/whattocook?ingredients=ffref4",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"whattocook"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "ffref4",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what to cook, empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/whattocook?ingredients=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"whattocook"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what to cook, invalid character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/whattocook?ingredients=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"whattocook"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "!%/",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?page=frferfe",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "frferfe",
+							"description": "number"
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, null page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?page=0",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"description": "number"
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?page=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number"
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?page=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "!%/",
+							"description": "number"
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid size",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?size=545446643",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "545446643",
+							"description": "number"
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, null size",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?size=0",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "0",
+							"description": "number"
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty size",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?size=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number"
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character size",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?size=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "!%/",
+							"description": "number"
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid sort",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?sort=fergrtt54tr45t5t54g4g54t5",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "fergrtt54tr45t5t54g4g54t5",
+							"description": "string"
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty sort",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?sort=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string"
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character sort",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?sort=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "!%/",
+							"description": "string"
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?categoryId=asian44443543535t",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian44443543535t",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?categoryId=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?categoryId=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "!%/",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?difficultyList=easy434343",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy434343",
+							"description": "string list"
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?difficultyList=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "",
+							"description": "string list"
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character difficultyList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?difficultyList=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "!%/",
+							"description": "string list"
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid costList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?costList=554t456t54",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "554t456t54",
+							"description": "string list"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty costList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?costList=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character costList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?costList=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "!%/",
+							"description": "string list"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?maxPreparationTime=rfefref43r3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "rfefref43r3",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, empty maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?maxPreparationTime=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination, invalid character maxPrepTime",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?maxPreparationTime=!%/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "!%/",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

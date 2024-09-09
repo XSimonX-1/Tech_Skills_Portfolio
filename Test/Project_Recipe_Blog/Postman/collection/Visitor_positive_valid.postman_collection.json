@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "ced2da4-f6ca-4fd2-826f-588e5af9171",
+		"name": "Visitor, positive, valid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34959014"
+	},
+	"item": [
+		{
+			"name": "list categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\", \"name\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/categories",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/all",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(id=\"52\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by keyword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(ingredients=\"bean\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes?keyword=bean",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "bean",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(category=\"soup\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"averageRating\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what to cook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(ingredients=\"water\", ingerdients=\"salt\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/whattocook?ingredients=water, salt",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"whattocook"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "water, salt",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe of the day",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/getRecipesOfTheDay",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"getRecipesOfTheDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get PDF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/savePdf/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"savePdf",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(category=\"asian\", difficulty=\"easy\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?categoryId=asian&difficultyList=easy",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": null,
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": null,
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list"
+						},
+						{
+							"key": "costList",
+							"value": null,
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": null,
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

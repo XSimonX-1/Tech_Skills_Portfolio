@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "585539-4e48-4f21-bad7-fcf16b8092",
+		"name": "Visitor, negative, valid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34959014"
+	},
+	"item": [
+		{
+			"name": "add category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"teszt\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/categories",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Teszt recept",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Ez egy teszt recept.",
+							"type": "text"
+						},
+						{
+							"key": "subtitle",
+							"value": "Juj de finom",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "easy",
+							"type": "text"
+						},
+						{
+							"key": "preparationTime",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost",
+							"value": "medium",
+							"type": "text"
+						},
+						{
+							"key": "ingredients",
+							"value": "semmi",
+							"type": "text"
+						},
+						{
+							"key": "publishingTime",
+							"value": "2024-09-14T19:10:00",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/Image.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Teszt recept",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Ez egy teszt recept.",
+							"type": "text"
+						},
+						{
+							"key": "subtitle",
+							"value": "Juj de finom",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "easy",
+							"type": "text"
+						},
+						{
+							"key": "preparationTime",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost",
+							"value": "medium",
+							"type": "text"
+						},
+						{
+							"key": "ingredients",
+							"value": "semmi",
+							"type": "text"
+						},
+						{
+							"key": "publishingTime",
+							"value": "2024-09-14T19:10:00",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/Image.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/update/15",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"update",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users me",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/me",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/reactivate/14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"reactivate",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe as favourite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/addToFavorites/12",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"addToFavorites",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saved recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"53\", \"userId\": \"4\", \"rating\": \"5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/getSavedRecipes?recipeIdList=52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"getSavedRecipes"
+					],
+					"query": [
+						{
+							"key": "recipeIdList",
+							"value": "52",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove saved",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"53\", \"userId\": \"4\", \"rating\": \"5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/removeFromSavedRecipes?recipeId=14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"removeFromSavedRecipes"
+					],
+					"query": [
+						{
+							"key": "recipeId",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inactive recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/inactive",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"inactive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "subscribe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/subscribe?authorId=8&userId=29",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"subscribe"
+					],
+					"query": [
+						{
+							"key": "authorId",
+							"value": "8",
+							"description": "number"
+						},
+						{
+							"key": "userId",
+							"value": "29",
+							"description": "number"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unsubscribe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/unSubscribe?authorEmail=gip@gmail.co&userEmail=dipwvvzouui@hthlm.com",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"unSubscribe"
+					],
+					"query": [
+						{
+							"key": "authorEmail",
+							"value": "gipskabdh@gmail.co",
+							"description": "string"
+						},
+						{
+							"key": "userEmail",
+							"value": "dipwvvzougqeqxui@hthlm.com",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile picture",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "dipwvvzougqqxui@hthlm.com",
+							"description": "text",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/profile.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/users/saveProfilePicture",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"saveProfilePicture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings by user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400, 401 or 500\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 401, 500]);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings?recipeId=52&userId=29",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					],
+					"query": [
+						{
+							"key": "recipeId",
+							"value": "52",
+							"description": "number"
+						},
+						{
+							"key": "userId",
+							"value": "29",
+							"description": "number"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rating a recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"53\", \"userId\": \"4\", \"rating\": \"5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/ratings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,1514 @@
+{
+	"info": {
+		"_postman_id": "0187c6b-bdd5-4c72-99ff-86b9e186e5a",
+		"name": "Author, positive, valid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34959014"
+	},
+	"item": [
+		{
+			"name": "list categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"id\", \"name\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/categories",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/all",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(id=\"52\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\",\"author\": \"TesztElek\",\"commentBody\": \"Ez egy jó recept!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/comments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by keyword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(ingredients=\"bean\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes?keyword=bean",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "bean",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list recipe by filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(category=\"soup\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/filter?categoryId=3&difficultyList=easy, medium, hard&costList=medium, expensive&maxPreparationTime=100",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "categoryId",
+							"value": "3",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy, medium, hard",
+							"description": "string[]"
+						},
+						{
+							"key": "costList",
+							"value": "medium, expensive",
+							"description": "string[]"
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "100",
+							"description": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "subscribe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/subscribe?authorId=8&userId=29",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"subscribe"
+					],
+					"query": [
+						{
+							"key": "authorId",
+							"value": "8",
+							"description": "number"
+						},
+						{
+							"key": "userId",
+							"value": "29",
+							"description": "number"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unsubscribe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/unSubscribe?authorEmail=gipsabdh@gmail.co&userEmail=dipwvvzougqxui@hthlm.com",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"unSubscribe"
+					],
+					"query": [
+						{
+							"key": "authorEmail",
+							"value": "gipskabdh@gmail.co"
+						},
+						{
+							"key": "userEmail",
+							"value": "dipwvvzoueqxui@hthlm.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile picture",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "dipwvvqiqeqxui@hthlm.com",
+							"description": "text",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/profile.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/users/saveProfilePicture",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"saveProfilePicture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe as favourite",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/addToFavorites/14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"addToFavorites",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saved recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/getSavedRecipes?recipeIdList=52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"getSavedRecipes"
+					],
+					"query": [
+						{
+							"key": "recipeIdList",
+							"value": "52",
+							"description": "string list"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove saved",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/removeFromSavedRecipes?recipeId=14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"removeFromSavedRecipes"
+					],
+					"query": [
+						{
+							"key": "recipeId",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inactive recipes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/inactive",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"inactive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activate recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/reactivate/14",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"reactivate",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 or 201 or 202\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"teszt\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/categories",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 or 201 or 202\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Teszt recept",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Ez egy teszt recept.",
+							"type": "text"
+						},
+						{
+							"key": "subtitle",
+							"value": "Juj de finom",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "easy",
+							"type": "text"
+						},
+						{
+							"key": "preparationTime",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost",
+							"value": "medium",
+							"type": "text"
+						},
+						{
+							"key": "ingredients",
+							"value": "semmi",
+							"type": "text"
+						},
+						{
+							"key": "publishingTime",
+							"value": "2024-08-14T16:20:00",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/Image.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 or 201 or 202\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Teszt recept",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Ez egy teszt recept.",
+							"type": "text"
+						},
+						{
+							"key": "subtitle",
+							"value": "Juj de finom",
+							"type": "text"
+						},
+						{
+							"key": "difficulty",
+							"value": "easy",
+							"type": "text"
+						},
+						{
+							"key": "preparationTime",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "cost",
+							"value": "medium",
+							"type": "text"
+						},
+						{
+							"key": "ingredients",
+							"value": "semmi",
+							"type": "text"
+						},
+						{
+							"key": "publishingTime",
+							"value": "2024-09-14T16:25:00",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/simon/Desktop/PROJEKT/0 Postman/V2/Image.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/update/15",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"update",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"averageRating\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe ratings by user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings?recipeId=52&userId=29",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					],
+					"query": [
+						{
+							"key": "recipeId",
+							"value": "52",
+							"description": "number"
+						},
+						{
+							"key": "userId",
+							"value": "29",
+							"description": "number"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rating a recipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"recipeId\": \"52\", \"userId\": \"29\", \"rating\": \"5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/ratings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what to cook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(ingredients=\"water\", ingerdients=\"salt\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/whattocook?ingredients=water, salt",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"whattocook"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "water, salt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recipe of the day",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/getRecipesOfTheDay",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"getRecipesOfTheDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get PDF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/savePdf/52",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"savePdf",
+						"52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pagination",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(category=\"asian\", difficulty=\"easy\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{JWT_token_v2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/recipes/pagination?categoryId=asian&difficultyList=easy",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"recipes",
+						"pagination"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "number",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						},
+						{
+							"key": "categoryId",
+							"value": "asian",
+							"description": "string"
+						},
+						{
+							"key": "difficultyList",
+							"value": "easy",
+							"description": "string list"
+						},
+						{
+							"key": "costList",
+							"value": "",
+							"description": "string list",
+							"disabled": true
+						},
+						{
+							"key": "maxPreparationTime",
+							"value": "",
+							"description": "string",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
