@@ -1,0 +1,150 @@
+name: Project_Blog1
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+      
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    - name: Install dependencies
+      run: |
+        python -m ensurepip --upgrade
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
+
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Install Docker Compose
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Build and run Docker Compose
+      run: |
+        retries=3
+        count=0
+        until [ $count -ge $retries ]
+        do
+          docker-compose -f compose.yaml up -d && break
+          count=$[$count+1]
+          echo "Retrying Docker Compose up ($count/$retries)..."
+          sleep 10
+        done
+        docker-compose -f compose.yaml ps
+
+    - name: install MySQL client
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y  mysql-client
+
+    - name: Install Node.js and Newman
+      run: |
+        curl -fsSL https://deb.nodesource.com/setup_20.17.0 | sudo -E bash -
+        sudo apt-get install -y nodejs
+        npm install -g newman-reporter-allure
+        #npm install -g newman newman-reporter-htmlextra
+
+    #- name: Create Report Directory
+      #run: mkdir -p Report
+    - name: Create Report Directory
+      run: mkdir -p ./allure-results
+
+    - name: Debug API Response
+      run: |
+        curl -X GET "http://localhost:8080/api/categories" \
+        -H "Authorization: Bearer ${{ secrets.BEARER_TOKEN }}" \
+        -i
+
+    #- name: Run Postman Collections
+      #run: |
+        #collections=("Visitor_positive_valid" "Visitor_positive_invalid" "Visitor_negative_valid" "Author_positive_valid" "Author_positive_invalid")
+        #for collection in "${collections[@]}"; do
+          #newman run ./API_Testing/Postman/collection/${collection}.postman_collection.json \
+            #-e ./API_Testing/Postman/environment/DisHub.postman_environment.json \
+            #-r cli,allure --reporter-allure-export "./allure-results/${collection}" || echo "Collection ${collection} failed, continuing..."
+            #X-r cli,htmlextra --reporter-htmlextra-export ./Report/newman-report_${collection}.html || echo "Collection ${collection} failed, continuing..."
+        #done
+        
+    - name: Run Postman Collections
+      run: |
+        collections=("Visitor_positive_valid" "Visitor_positive_invalid" "Visitor_negative_valid" "Author_positive_valid" "Author_positive_invalid")
+        for collection in "${collections[@]}"; do
+          echo "Running collection: ${collection}"
+          if newman run ./API_Testing/Postman/collection/${collection}.postman_collection.json \
+            --env-var "auth_token=${{ secrets.BEARER_TOKEN }}" --env-var "baseURL=${{ secrets.baseURL }}" \
+            -r cli,allure --reporter-allure-export "./allure-results/${collection}"; then
+            echo "Collection ${collection} succeeded."
+          else
+            echo "Collection ${collection} failed."
+          fi
+        done
+
+
+    #- name: Locate Newman Reports
+      #run: find . -name "newman-report_*.html"
+
+    #- name: Check if Reports Exist
+      #run: |
+        #if [ ! "$(ls -A Report)" ]; then
+          #echo "No reports generated";
+          #exit 1;
+        #fi
+
+    #- name: List files before uploading
+      #run: ls -R Report
+
+    #- name: Upload Newman Reports
+      #if: always()
+      #uses: actions/upload-artifact@v3
+      #with:
+        #name: newman-reports
+        #path: Report
+
+    - name: Test with pytest
+      env:
+          FRONTEND_URL: http://localhost:4200
+          BACKEND_URL: http://localhost:8080
+          DATABASE_HOST: localhost
+          DATABASE_PORT: 3306
+          DATABASE_USER: root
+          DATABASE_PASSWORD: xxxx
+          DATABASE_NAME: blog
+      run: |
+        pytest --alluredir=allure-results
+
+    - name: Allure Report action from marketplace
+      uses: simple-elf/allure-report-action@master
+      if: always ()
+      with:
+        allure_results: allure-results
+        allure_history: allure-history
+        keep_reports: 20
+
+    - name: Deploy report to Github Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: allure-history
+        
