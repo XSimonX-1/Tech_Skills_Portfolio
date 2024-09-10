@@ -8,4 +8,4 @@ This repository showcases a variety of sample projects that demonstrate my skill
 
    *(My work was supported by a team member due to the large volume of tasks.)*
 
-- In the *JTest_Automation/SoapUI* folder, you will find a basic **SoapUI** project designed for demonstration purposes. The scope of the tasks included: initializing the project, designing test cases, implementing various assertions (such as XPath Match), and externalizing as well as managing test data.
+- In the *JTest_Automation/SoapUI* folder, you will find a basic **SoapUI** project designed for demonstration purposes. The scope of the tasks included: initializing the project, designing test cases, implementing various assertions (such as **XPath Match**), and externalizing as well as managing test data.
